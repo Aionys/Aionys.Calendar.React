@@ -44,13 +44,14 @@ export const Popup: FC<Props> = props => {
                 e.stopPropagation();
                 e.nativeEvent.stopImmediatePropagation();
             }}>
-                <span>New Task!</span>
-                <span className={c.date}>{props.currentCell?.toDateString()}</span>
+                <span>New Event!</span>
+                <time className={c.date}>{props.currentCell?.toDateString()}</time>
                 <form onSubmit={formik.handleSubmit}>
                     <input
                         onChange={formik.handleChange}
                         value={formik.values.title}
                         name='title'
+                        placeholder='Event name'
                     />
                     {formik.errors.title && <span className={c.error}>required</span>}
                     <input type="time"
@@ -60,8 +61,8 @@ export const Popup: FC<Props> = props => {
                     ></input>
                     {formik.errors.time ? <span className={c.error}>required</span> : null}
                     <div className={c["btn-panel"]}>
-                        <button>add task</button>
-                        <button onClick={() => {
+                        <button className="waves-effect waves-light btn">add event</button>
+                        <button className="waves-effect waves-light btn" onClick={() => {
                             props.setCurrentCell(null)
                             props.setPopup(false)
                         }}>cancel</button>

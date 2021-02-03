@@ -3,6 +3,7 @@ import { addMonths, subMonths, format } from "date-fns";
 import c from '../Calendar.module.scss'
 import iconLeft from '../../../assets/icons/left.png'
 import iconRight from '../../../assets/icons/right.png'
+import { dateMMMMYYYYFormat } from '../../../utils/date.utils';
 
 type Props = {
     selectDate: Dispatch<SetStateAction<Date>>;
@@ -11,13 +12,12 @@ type Props = {
     isButtonDisabled: boolean;
 }
 
-type PrevNext = 'prev' | 'next'
+type Action = 'prev' | 'next'
 
 export const CalendarHeader: FC<Props> = props => {
     let monthNum = 1
-    const dateFormat = "MMMM yyyy";
 
-    const prevNextMonth = (type: PrevNext): void => {
+    const prevNextMonth = (type: Action): void => {
         if (type === 'prev') {
             props.selectDate(subMonths(props.selectedDate, monthNum))
             monthNum--
@@ -33,7 +33,7 @@ export const CalendarHeader: FC<Props> = props => {
 
     return (
         <div className={c['calendar-header']}>
-            <span className={c.title}>{format(props.selectedDate, dateFormat)}</span>
+            <span className={c.title}>{format(props.selectedDate, dateMMMMYYYYFormat)}</span>
             <div className={c['btn-panel']}>
                 <button disabled={props.isButtonDisabled} className={c['btn-prev']} onClick={() => prevNextMonth('prev')}>
                     <img src={iconLeft} alt="left" />
