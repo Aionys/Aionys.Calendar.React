@@ -1,5 +1,5 @@
-import React, { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
-import c from './Popup.module.scss'
+import React, { Dispatch, FC, SetStateAction } from 'react'
+import c from './Popup.module.scss';
 import { CurrentCell } from '../Calendar/CalendarBody/CalendarBody';
 import { useFormik } from 'formik';
 import { Schedule } from '../Calendar/Calendar';

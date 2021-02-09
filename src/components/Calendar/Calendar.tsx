@@ -15,7 +15,7 @@ export type Schedule = {
     tasks: Task[];
 }[][]
 
-export const Calendar: FC<any> = props => {
+export const Calendar: FC<any> = () => {
     const [currentDate] = useState(new Date())
     const [selectedDate, selectDate] = useState(new Date())
     const [isButtonDisabled, disableButton] = useState(false)
